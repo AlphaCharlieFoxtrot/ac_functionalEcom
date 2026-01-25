@@ -1,5 +1,6 @@
 <?php
-require_once '../config/config.php';
+require_once __DIR__ . '/../config/config.php';
+
 // Vérifier si user connecté
 if(!isset($_SESSION['user'])){
     header("Location: connexion.php");

@@ -1,6 +1,6 @@
 <?php
-require_once '../config/config.php';
-require_once '../includes/functions.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once BASE_PATH . '/includes/functions.php';
 
 // 1. Vérifier admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {

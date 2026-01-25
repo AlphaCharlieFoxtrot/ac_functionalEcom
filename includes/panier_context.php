@@ -1,5 +1,5 @@
 <?php
-require_once '../config/config.php';
+require_once __DIR__ . '/../config/config.php';
 
 $utilisateur_id = $_SESSION['user']['id'] ?? null;
 $invite_id = $_SESSION['invite_id'] ?? null;

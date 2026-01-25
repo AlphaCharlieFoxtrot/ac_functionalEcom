@@ -1,5 +1,5 @@
 <?php
-    require_once '../../config/config.php';
+    require_once __DIR__ . '/../../config/config.php';
 
     //controle admin
     if(!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin'){

@@ -1,5 +1,6 @@
 <?php
-require_once "../config/config.php";
+require_once __DIR__ . '/../config/config.php';
+
 // Récupérer l'ID du produit depuis l'URL
 $produit_id = intval($_GET['id'] ?? 0);
 // Si l'ID n'est pas valide, rediriger vers la page d'accueil

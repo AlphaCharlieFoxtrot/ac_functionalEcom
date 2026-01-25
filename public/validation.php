@@ -1,6 +1,6 @@
 <?php
-require_once '../config/config.php';
-require_once '../includes/panier_context.php';
+require_once __DIR__ . '/../config/config.php';
+require_once BASE_PATH . '/includes/panier_context.php';
 
 // Vérification méthode POST sinon -> panier
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -38,8 +38,8 @@ if (isset($_POST['confirme'])) {
 
     if ($utilisateur_id !== null) {
         $stmt = $pdo->prepare(
-            "INSERT INTO commandes (utilisateur_id, total, date_commande)
-             VALUES (:uid, :t, NOW())"
+            "INSERT INTO commandes (utilisateur_id, total, date_commande, statut_payement)
+             VALUES (:uid, :t, NOW(), 'en_attente')"
         );
         $stmt->execute([
             'uid' => $utilisateur_id,
@@ -47,8 +47,8 @@ if (isset($_POST['confirme'])) {
         ]);
     } else {
         $stmt = $pdo->prepare(
-            "INSERT INTO commandes (invite_id, total, date_commande)
-             VALUES (:iid, :t, NOW())"
+            "INSERT INTO commandes (invite_id, total, date_commande, statut_payement)
+             VALUES (:iid, :t, NOW(), 'en_attente')"
         );
         $stmt->execute([
             'iid' => $invite_id,
@@ -86,7 +86,7 @@ if (isset($_POST['confirme'])) {
         'iid' => $invite_id
     ]);
 
-    header("Location: commande_validee.php?id=" . $commande_id);
+    header("Location: " . BASE_URL . "/stripe/payer.php?id=" . $commande_id);
     exit;
 }
 
@@ -105,5 +105,5 @@ if (isset($_POST['confirme'])) {
 </ul>
 <h3>Prix total de votre panier : <?= $total ?> €</h3>
 <form method="post">
-    <button type="submit" name="confirme">Confirmer la commande</button>
+    <button type="submit" name="confirme">Payer la commande</button>
 </form>

@@ -1,5 +1,6 @@
 <?php
-require_once '../config/config.php';
+require_once __DIR__ . '/../config/config.php';
+// Détruire toutes les variables de session
 $_SESSION = [];
 
 if (ini_get("session.use_cookies")){

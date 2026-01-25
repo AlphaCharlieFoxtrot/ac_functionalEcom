@@ -1,5 +1,5 @@
 <?php
-    require_once '../../config/config.php';
+    require_once __DIR__ . '/../../config/config.php';
 
     //1.verifier que user est admin
     if(!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin'){

@@ -1,5 +1,6 @@
 <?php
-require_once "../config/config.php";
+require_once __DIR__ . '/../config/config.php';
+
 
 // Récupération des produits (limités pour l'accueil)
 $stmt = $pdo->query("SELECT * FROM produits ORDER BY created_at DESC LIMIT 6");

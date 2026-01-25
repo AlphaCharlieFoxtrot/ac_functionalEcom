@@ -1,3 +1,3 @@
 <?php
-header("Location: ../panier.php");
+header("Location: /../public/panier.php");
 exit;

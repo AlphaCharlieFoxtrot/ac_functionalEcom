@@ -1,7 +1,7 @@
 <?php 
-require_once '../config/config.php';
-require_once '../includes/functions.php';
-require_once '../includes/panier_context.php';
+require_once __DIR__ . '/../config/config.php';
+require_once BASE_PATH . '/includes/functions.php';
+require_once BASE_PATH . '/includes/panier_context.php';
 
 // 2) Récupérer les lignes du panier
 $query= "SELECT pa.id AS ligne_id, p.nom, p.prix, pa.quantite, p.id AS prod_id  FROM panier pa JOIN produits p ON pa.produit_id = p.id WHERE (pa.utilisateur_id = :uid AND :uid IS NOT NULL
