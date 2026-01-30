@@ -42,9 +42,15 @@
 
     // S'il n'y a pas d'erreur → suppression
     if($error_message === ''){
-        $deletequery = "DELETE FROM commandes WHERE id = :cid";
-        $stmt = $pdo->prepare($deletequery);
+        $pdo->beginTransaction();
+
+        $stmt = $pdo->prepare("DELETE FROM commande_produits WHERE commande_id = :cid");
         $stmt->execute(['cid' => $commande_id]);
+
+        $stmt = $pdo->prepare("DELETE FROM commandes WHERE id = :cid");
+        $stmt->execute(['cid' => $commande_id]);
+
+        $pdo->commit();
 
         $_SESSION['success_message'] = "Commande supprimée avec succès.";
         header("Location: admin_commandes.php");
@@ -62,8 +68,15 @@
     <p>
         Commande de:
         <strong>
-            <?= htmlspecialchars($commande['username']); ?>
-            <?= htmlspecialchars($commande['email']); ?>
+            <?php
+            if ($commande['username'] === null) {
+                $commande['username'] = 'Invité';
+                $commande['email'] = 'Commande invitée';
+            } else {
+                $username = $commande['username'];
+                $email = $commande['email'];
+            }
+            ?>
         </strong>
     </p>
     <p>
@@ -96,4 +109,4 @@
         ANNULER
     </a>
 
-<?php include '../../includes/footer.php'; ?>
+<?php include BASE_PATH .'/includes/footer.php'; ?>

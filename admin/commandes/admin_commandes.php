@@ -47,12 +47,14 @@
                             <td><?= htmlspecialchars($commande['statut']); ?></td>
                             <td><?= htmlspecialchars($commande['date_commande']); ?></td>
                             <td>
-                                <a href="admin_commande_details.php?id=<?= $commande['commande_id']; ?>">Voir</a>
-                                <a href="admin_supprimer_commande.php?id=<?= $commande['commande_id']; ?>" onclick="return confirm('Supprimer cet commande ?')>Supprimer</a>
+                                <a href="admin_commande_details.php?id=<?= $commande['commande_id']; ?>">Voir commande</a>
+                            </td>
+                            <td>
+                                <a href="admin_supprimer_commande.php?id=<?= $commande['commande_id']; ?>" onclick="return confirm('Supprimer cet commande ?')">Supprimer commande</a>
                             </td>
 
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?></td>
                 </tbody>
             </table>
     <?php endif; ?>

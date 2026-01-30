@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <?php endif; ?>
 
 <article>
-    <p><strong>Client ID :</strong> <?= htmlspecialchars($commande['utilisateur_id']) ?></p>
+    <p><strong>Client ID :</strong> <?= htmlspecialchars($commande_id) ?></p>
     <p><strong>Date :</strong> <?= htmlspecialchars($commande['date_commande']) ?></p>
     <p><strong>Total :</strong> <?= htmlspecialchars($commande['total']) ?> €</p>
     <p><strong>Statut actuel :</strong> <?= htmlspecialchars($commande['statut']) ?></p>
@@ -93,4 +93,4 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     </form>
 </article>
 
-<?php include "../includes/footer.php"; ?>
+<?php include BASE_PATH . '/includes/footer.php'; ?>

@@ -52,4 +52,4 @@
         </div>
     </form>
 
-<?php include '../../includes/footer.php'; ?>
+<?php include BASE_PATH . '/../../includes/footer.php'; ?>
