@@ -9,10 +9,10 @@ if ($commande_id <= 0) {
 
 $stmt = $pdo->prepare(
     "UPDATE commandes
-     SET statut_payement = 'succces'
+     SET statut = 'succes'
      WHERE id = :id"
 );
 $stmt->execute(['id' => $commande_id]);
 
-header("Location: ../commande_validee.php?id=" . $commande_id);
+header("Location: " . BASE_URL . "/public/commande_validee.php?id=" . $commande_id);
 exit();
